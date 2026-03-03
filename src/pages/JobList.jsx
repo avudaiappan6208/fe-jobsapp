@@ -1,6 +1,5 @@
-
-
-const joblist = () => {
+import { toast } from "react-toastify";
+const JobList = () => {
   toast.success("Joblist loaded");
   return (
     <>
@@ -9,4 +8,4 @@ const joblist = () => {
   )
 }
 
-export default joblist;
+export default JobList;

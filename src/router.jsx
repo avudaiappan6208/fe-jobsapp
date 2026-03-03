@@ -1,15 +1,28 @@
-import { createBrowserRouter } from 'react-router';
+import { createBrowserRouter } from 'react-router-dom';
 import App from "./App.jsx";
-import JobList from './pages/JobList.jsx';
+
+import Register from "./pages/Register.jsx";    
+import Home from './pages/Home.jsx';
+import Login from './pages/Login.jsx';
+
 
 const routes = [
     {
         path: '/',
         element: <App />,
-        Children: [
+        children: [
             {
-                path:"",
-                element:<JobList/>
+                path: "",
+                element: <Home />,
+
+            },
+            {
+                path: "register",
+                element: <Register />,
+            },
+            {
+                path: "login",
+                element: <Login />,
             }
 
         ]
