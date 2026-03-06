@@ -4,11 +4,15 @@ import { RouterProvider } from 'react-router-dom';
 import router from './router.jsx';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Provider } from 'react-redux'; 
+import store from './redux/application/store';
+
+
 
 createRoot(document.getElementById('root')).render(
-    <>
+    <Provider store={store}>
         <RouterProvider router={router} />
         <ToastContainer position='top-right' autoClose={3000} 
         hideProgressBar={false} newestOntop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
-    </>
+    </Provider>
 );
