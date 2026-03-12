@@ -21,7 +21,9 @@ const Register = () => {
                 dispatch(setPassword(''));
 
                 // redirect to login page
-                navigate('/login');
+              setTimeout(() => {
+                  navigate('/login');
+              }, 500);
             }
         } catch (error) {
             toast.error(error.response?.data?.message || "Registration failed");
