@@ -4,12 +4,14 @@ import App from "./App.jsx";
 import Register from "./pages/Register.jsx";    
 import Home from './pages/Home.jsx';
 import Login from './pages/Login.jsx';
+import authloader from './loaders/unit/authloader.js';
 
 
 const routes = [
     {
         path: '/',
         element: <App />,
+        loader:authloader,
         children: [
             {
                 path: "",
@@ -25,7 +27,8 @@ const routes = [
                 element: <Login />,
             }
 
-        ]
+        ],
+        hydrateFallbackElement: <div>Loading......</div>,
     }
 ];
 const router = createBrowserRouter(routes, {
