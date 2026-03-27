@@ -1,17 +1,18 @@
 import { createBrowserRouter } from 'react-router-dom';
 import App from "./App.jsx";
-
 import Register from "./pages/Register.jsx";    
 import Home from './pages/Home.jsx';
 import Login from './pages/Login.jsx';
 import authloader from './loaders/unit/authloader.js';
+import Logout from './components/Logout.jsx';
+
 
 
 const routes = [
     {
         path: '/',
         element: <App />,
-        loader:authloader,
+       loader: authloader,
         children: [
             {
                 path: "",
@@ -25,6 +26,10 @@ const routes = [
             {
                 path: "login",
                 element: <Login />,
+            },
+            {
+                path: "logout",
+                element: <Logout />,
             }
 
         ],

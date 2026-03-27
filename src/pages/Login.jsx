@@ -23,10 +23,12 @@ const Login = () => {
             const response = await instance.post('/auth/login', { email, password });
             if (response.status === 200) {
                 toast.success(response.data.message);
+                const response = await authServices.me();
+                dispatch(setUser(response.data));
                 dispatch(setEmail(''));
                 dispatch(setPassword(''));
                 setTimeout(() => {
-                    Navigate('/');
+                    Navigate('/', { replace: true });
 
                 }, 500);
 
