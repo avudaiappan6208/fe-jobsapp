@@ -1,16 +1,25 @@
-import { Outlet } from "react-router-dom"
+import { Outlet, useLoaderData } from "react-router-dom"
 import Layout from "./layouts/layout.jsx"
-import { useLoaderData } from "react-router"
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setUser, clearUser } from "./redux/features/auth/userSlice.js";
 
 const App = () => {
 
-  const user = useLoaderData()
-  
+ const user = useLoaderData();
+ const dispatch = useDispatch();
+useEffect(() => {
+  if (user) {
+    dispatch(setUser(user));
+  }else {
+    dispatch(clearUser());
+  }
+}, [user]);
+ 
+
 
   return (
-    <Layout
-      user={user}
-      >
+    <Layout>
       <Outlet />
     </Layout>
   )

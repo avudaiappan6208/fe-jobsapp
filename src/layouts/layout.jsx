@@ -1,8 +1,11 @@
+import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { selectUser } from "../redux/features/auth/userSlice.js";
 
-const layout = ({ children, user }) => {
+
+const layout = ({ children }) => {
   const navigate = useNavigate()
-  console.log(user);
+  const user = useSelector(selectUser);
   return (
     <div className="min-h-screen flex flex-col">
       <nav className="bg-gray-900 text-white p-4 flex justify-between">
@@ -41,7 +44,7 @@ const layout = ({ children, user }) => {
           {
             user && (
               <button className="bg-red-500 px-3 py-1 rounded hover:bg-red-600" onClick={() => {
-                navigate("/logout");
+                navigate("/logout", { replace: true });
               }}>
                 Logout
               </button>

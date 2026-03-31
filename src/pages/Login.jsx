@@ -5,8 +5,9 @@ import { useDispatch } from "react-redux"
 import { setEmail } from "../redux/features/auth/loginslice"
 import { setPassword } from "../redux/features/auth/loginslice"
 import { toast } from "react-toastify"
-import instance from "../services/instance"
-import { Navigate, useNavigate } from "react-router"
+import { useNavigate } from "react-router"
+import authServices from "../services/authServices.js"
+import { setUser } from "../redux/features/auth/userSlice.js"
 
 
 
@@ -20,9 +21,9 @@ const Login = () => {
     const handlelogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await instance.post('/auth/login', { email, password });
+            const response = await authServices.login({ email, password });
             if (response.status === 200) {
-                toast.success(response.data.message);
+                toast.success('Login successful');
                 const response = await authServices.me();
                 dispatch(setUser(response.data));
                 dispatch(setEmail(''));
